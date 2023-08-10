@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const lpsustentabilidade: StorefrontFunctionComponent = () => {
   return (
@@ -6,9 +6,20 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
 
       <link rel="stylesheet" href="https://boschferramentasbrasil.vtexassets.com/_v/public/assets/v1/bundle/css/asset.min.css?v=3&files=theme,boschferramentasbrasil.builderio@0.5.1$style.common,boschferramentasbrasil.builderio@0.5.1$style.small,boschferramentasbrasil.builderio@0.5.1$style.notsmall,boschferramentasbrasil.builderio@0.5.1$style.large,boschferramentasbrasil.builderio@0.5.1$style.xlarge&files=fonts,989db2448f309bfdd99b513f37c84b8f5794d2b5&files=npm,animate.css@3.7.0/animate.min.css&files=react~vtex.render-runtime@8.134.0-beta.0,common&files=react~vtex.store-components@3.169.0,Container,4,SearchBar,Logo,DiscountBadge&files=react~vtex.styleguide@9.146.9,0,1,Spinner&files=react~vtex.flex-layout@0.21.3,0&files=react~vtex.admin-pages@4.51.2,HighlightOverlay&files=react~vtex.rich-text@0.16.0,index&files=react~boschferramentasbrasil.components@0.3.0,LgpdCookie,HelpFloater,HeaderZipCode,SearchBarMobileToggle,MenuHeaderMobile&files=react~vtex.login@2.57.0,1&files=react~vtex.minicart@2.67.1,Minicart&files=react~vtex.search@2.16.4,Autocomplete&files=react~vtex.product-summary@2.83.1,ProductSummaryImage&files=overrides,vtex.product-list@0.37.1$overrides,vtex.product-comparison@0.18.0$overrides,vtex.minicart@2.67.1$overrides,boschferramentasbrasil.builderio@0.5.1$overrides,boschferramentasbrasil.builderio@0.5.1$fonts&workspace=master" />
       <link rel="stylesheet" href="https://boschferramentasbrasil.myvtex.com/files/vtex--app-lp.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" />
+
+      <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+      <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+      <script src="https://boschferramentasbrasil.vteximg.com.br/arquivos/slick.min.js"></script>
+      <script src="https://boschferramentasbrasil.myvtex.com/files/vtex--app-lp.js"></script>
 
 
-      <section className='banner__main'>
+      <section className='banner__main desktop'>
+
+      </section>
+
+      <section className='banner__main mobile'>
 
       </section>
 
@@ -53,41 +64,41 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
         <h2>Conheça nossa história sustentável</h2>
         <hr></hr>
         <ul className='history__years'>
-          <li>
-            <label>2007</label>
+          <div>
+            <p>2007</p>
 
-          </li>
+          </div>
 
-          <li>
-            <label>2016</label>
+          <div>
+            <p>2016</p>
 
-          </li>
+          </div>
 
-          <li>
-            <label>2018</label>
+          <div>
+            <p>2018</p>
 
-          </li>
+          </div>
 
-          <li>
-            <label>2019</label>
+          <div>
+            <p>2019</p>
 
-          </li>
+          </div>
 
-          <li>
-            <label>2020</label>
+          <div>
+            <p>2020</p>
 
-          </li>
+          </div>
 
-          <li>
-            <label>2021</label>
+          <div>
+            <p>2021</p>
 
-          </li>
+          </div>
 
-          <li>
-            <label>2022</label>
+          <div>
+            <p>2022</p>
 
 
-          </li>
+          </div>
 
 
 
