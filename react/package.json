@@ -18,8 +18,10 @@
     "@vtex/test-tools": "^3.3.2",
     "@vtex/tsconfig": "^0.4.4",
     "apollo-cache-inmemory": "^1.6.5",
+    "boschferramentasbrasil.scoremedia-app": "https://ruancs--boschferramentasbrasil.myvtex.com/_v/private/typings/linked/v1/boschferramentasbrasil.scoremedia-app@0.0.0+build1691627812/public/@types/boschferramentasbrasil.scoremedia-app",
     "graphql": "^14.6.0",
-    "typescript": "3.9.7"
+    "typescript": "3.9.7",
+    "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.134.0-beta.0/public/@types/vtex.render-runtime"
   },
   "resolutions": {
     "@types/jest": "26.0.15"
