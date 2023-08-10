@@ -1,0 +1,278 @@
+.banner__main {
+  width: 1140px;
+  height: 300px;
+  background-color: #084179;
+  margin: 0 auto;
+
+}
+
+.banner__green {
+  width: 1140px;
+  height: 300px;
+  background-image: url('https://boschferramentasbrasil.vteximg.com.br/arquivos/banner-green-eletron.jpg');
+  margin: 0 auto;
+
+}
+
+.mobile {
+  display: none;
+}
+
+.section__text-one {
+  text-align: center;
+  font-family: Bosch Sans;
+}
+
+.section__text-one h1 {
+  color: #1E1E1E;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.section__text-one p {
+  font-size: 18px;
+}
+
+.section__text-one span {
+  font-size: 18px;
+  background-color: #CEE741;
+}
+
+
+.section__cards {
+  display: flex;
+  margin-top: 3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  background-color: #084179;
+  padding: 1px 41px;
+  gap: 32px;
+  align-items: center;
+  border-radius: 12px;
+  width: 500px;
+}
+
+.section__cards p {
+  width: 238px;
+  color: #FFF;
+  font-family: Bosch Sans;
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.section__history {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.section__history hr {
+  width: 1025px;
+  background: #084179;
+  height: 5px;
+  border-radius: 5px;
+}
+
+.history__years {
+  list-style: none;
+  display: flex;
+  padding: 7px 24px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 35px;
+
+}
+
+.history__years li {
+  width: 126px;
+  text-align: center;
+  padding: 20px 19px 20px 20px;
+}
+
+.history__years .slick-slide {
+  display: block !important;
+  background: red !important;
+  padding: 83px 138px !important;
+
+}
+
+.history__years .slick-track {
+  display: flex !important;
+  position: relative;
+  top: 0;
+  width: 291px !important;
+  left: 0;
+  display: block;
+  height: 274px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section__metas {
+  width: 1140px;
+  margin: 174px auto;
+}
+
+.section__metas h2 {
+  color: #1E1E1E;
+  text-align: center;
+  font-family: Bosch Sans;
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.meta__cards {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  /* gap:10px; */
+}
+
+.meta__cards div {
+  display: flex;
+  border-radius: 15px;
+  padding: 7px;
+  line-height: 1.4;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 220px;
+  height: 268px;
+}
+
+.bg-lemon {
+  background: #CEE741;
+  color: #084179;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.bg-dblue {
+  background: #084179;
+  color: #FFF;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.section__know {
+  display: flex;
+  width: 1140px;
+  justify-content: center;
+  margin: 46px auto;
+}
+
+.section__know div {
+  width: 38%;
+}
+
+.section__know div h2 {
+  color: #1E1E1E;
+  font-family: Bosch Sans;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.section__know div span {
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.section__know div span:after {
+  content: '';
+  display: block;
+  position: relative;
+  width: 90%;
+  z-index: -1;
+  /* left:10px; */
+  top: -26px;
+  height: 26px;
+  background: #CEE741;
+}
+
+.section__know div p {
+  margin-top: -43px;
+  padding: 0;
+}
+
+.banner__projects {
+  width: 1030px;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.banner__projects .slick-next {
+  right: 20px !important;
+}
+
+.banner__projects .slick-prev {
+  left: 10px !important;
+  z-index: 999;
+}
+
+.banner__projects .slick-prev:before,
+.slick-next:before {
+  font-size: 35px;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .section__text-one h1 {
+    font-size: 22px;
+  }
+
+  .desktop {
+    display: none !important;
+  }
+
+  .mobile {
+    display: block;
+    width: 100%;
+  }
+
+  .section__cards {
+    flex-direction: column;
+  }
+
+  .section__history hr {
+    width: 99%;
+  }
+
+  .section__cards {
+    flex-direction: column;
+  }
+
+  .section__cards p {
+    font-size: 12px;
+  }
+
+  .card {
+    width: 354px;
+  }
+
+  .section__history hr {
+    width: 100%;
+  }
+
+  .history__years {
+    padding: 0;
+  }
+}

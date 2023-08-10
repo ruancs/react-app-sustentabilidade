@@ -15,6 +15,7 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
       <script src="https://boschferramentasbrasil.myvtex.com/files/vtex--app-lp.js"></script>
 
 
+
       <section className='banner__main desktop'>
 
       </section>
@@ -143,6 +144,33 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
 
         </div>
       </section>
+
+      <section className="section__know">
+        <div>
+          <h2>Conheça o <br /> <span>BOSCH RECICLA</span></h2>
+          <p>Com a constante preocupação em manter o meio ambiente limpo, a Bosch criou uma parceria com a <strong>Green Eletron</strong>, da ABINEE, para promover o descarte sustentável das ferramentas e embalagens que circulam no mercado. <strong>Todo material descartado nos coletores da Green Eletron passa pelo processo de descarte consciente.</strong></p>
+          <a href="#">Confira o passo a passo do programa</a>
+        </div>
+
+        <div>
+          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/img_know_bosch.png" alt="bosch recicla" />
+        </div>
+
+      </section>
+
+      <section className="banner__green desktop"></section>
+      <section className="banner__green mobile"></section>
+
+      <section className="banner__projects desktop">
+        <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_ferramentas_sustentaveis.png" alt="ferramentas_sustentaveis" />
+        <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_maletas_reciclaveis.png" alt="maletas_reciclaveis" />
+        <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_saco_biodegradavel.png" alt="saco_biodegradavel" />
+      </section>
+
+
+
+
+
     </>
   )
 
