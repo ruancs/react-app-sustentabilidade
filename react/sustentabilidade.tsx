@@ -1,4 +1,5 @@
 import React from 'react';
+import Slider from './slider';
 
 const lpsustentabilidade: StorefrontFunctionComponent = () => {
   return (
@@ -14,8 +15,7 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
       <script src="https://boschferramentasbrasil.vteximg.com.br/arquivos/slick.min.js"></script>
       <script src="https://boschferramentasbrasil.myvtex.com/files/vtex--app-lp.js"></script>
 
-
-
+      <Slider />
       <section className='banner__main desktop'>
 
       </section>
@@ -162,11 +162,14 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
       <section className="banner__green mobile"></section>
 
       <section className="banner__projects desktop">
-        <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_ferramentas_sustentaveis.png" alt="ferramentas_sustentaveis" />
-        <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_maletas_reciclaveis.png" alt="maletas_reciclaveis" />
-        <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_saco_biodegradavel.png" alt="saco_biodegradavel" />
-      </section>
+        <Slider>
 
+          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_ferramentas_sustentaveis.png" alt="ferramentas_sustentaveis" />
+          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_maletas_reciclaveis.png" alt="maletas_reciclaveis" />
+          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_saco_biodegradavel.png" alt="saco_biodegradavel" />
+
+        </Slider >
+      </section>
 
 
 
