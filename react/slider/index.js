@@ -5,9 +5,11 @@ import Slider from "react-slick"
 export default function Slick({ children }) {
 
   const settings = {
-    dots: true,
+    dots: false,
+    arrows: true,
     infinite: true,
     speed: 500,
+    autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1
   };
