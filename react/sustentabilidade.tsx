@@ -1,7 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Slider from './slider';
 
+
+
+
+
 const lpsustentabilidade: StorefrontFunctionComponent = () => {
+
+  const [clickedElement, setClickedElement] = useState(null);
+  const [colorChange, setColorChange] = useState(false);
+
+  const changeH = (event) => {
+    const elementoClicado = event.target;
+
+    setColorChange(!colorChange);
+
+    if (colorChange) {
+      elementoClicado.style.backgroundColor = '#CEE741';
+
+    } else {
+      elementoClicado.style.backgroundColor = '';
+    }
+
+    setClickedElement(clickedElement);
+
+  };
+
   return (
     <>
 
@@ -63,37 +87,37 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
         <hr></hr>
         <div className='history__years'>
           <div>
-            <p>2007</p>
+            <h3 onClick={changeH}>2007</h3>
 
           </div>
 
           <div>
-            <p>2016</p>
+            <h3 onClick={changeH}>2016</h3>
 
           </div>
 
           <div>
-            <p>2018</p>
+            <h3 onClick={changeH}>2018</h3>
 
           </div>
 
           <div>
-            <p>2019</p>
+            <h3 onClick={changeH}>2019</h3>
 
           </div>
 
           <div>
-            <p>2020</p>
+            <h3 onClick={changeH}>2020</h3>
 
           </div>
 
           <div>
-            <p>2021</p>
+            <h3 onClick={changeH}>2021</h3>
 
           </div>
 
           <div>
-            <p>2022</p>
+            <h3 onClick={changeH}>2022</h3>
 
 
           </div>
@@ -103,6 +127,8 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
       </section>
 
       <section className='section__history mobile'>
+        <h2>Conheça nossa história sustentável</h2>
+        <hr></hr>
         <Slider>
 
           <div>
