@@ -2,28 +2,82 @@ import React, { useState } from 'react';
 import Slider from './slider';
 
 
-
-
-
 const lpsustentabilidade: StorefrontFunctionComponent = () => {
 
   const [clickedElement, setClickedElement] = useState(null);
-  const [colorChange, setColorChange] = useState(false);
 
-  const changeH = (event) => {
+  const [displayText, setDisplayText] = useState('');
+
+
+  const Hand = (event) => {
+
     const elementoClicado = event.target;
+    console.log(event.target)
 
-    setColorChange(!colorChange);
 
-    if (colorChange) {
-      elementoClicado.style.backgroundColor = '#CEE741';
+    if (elementoClicado.style.backgroundColor == '#CEE741' || elementoClicado.style.backgroundColor == 'rgb(206, 231, 65)') {
+      elementoClicado.style.backgroundColor = '';
 
     } else {
-      elementoClicado.style.backgroundColor = '';
+      elementoClicado.style.backgroundColor = '#CEE741';
     }
 
     setClickedElement(clickedElement);
 
+  };
+
+  const removeAl = () => {
+    const elementos = document.querySelectorAll('.history__years div h3');
+    elementos.forEach(el => {
+
+      (el as HTMLElement).style.backgroundColor = '';
+
+    });
+  }
+
+
+
+
+  const handleClick = (element) => {
+    // Define o texto a ser exibido com base no elemento clicado
+    let newText = '';
+    Hand(event)
+
+    switch (element) {
+      case 'element1':
+        newText = 'Gestão ambiental é introduzida nas plantas da Bosch pelo mundo.';
+        break;
+      case 'element2':
+        newText = 'Desenvolvimento da 1ª furadeira com carcaça de matéria-prima reciclada na cor preta.';
+        break;
+      case 'element3':
+        newText = 'Lançamento dos produtos sustentáveis GSB 550, GSB 450 e GWS 850, com redução de mais de 200 toneladas de matéria-prima ao ano.';
+        break;
+      case 'element4':
+        newText = '• Início da fabricação das ferramentas elétricas vigentes com carcaça de material reciclado. • Início da parceria com a Green Eletron, da ABINEE, para logística reversa e descarte sustentável.';
+        break;
+      case 'element5':
+        newText = '• Bosch alcança em suas plantas a neutralidade de carbono em todo o mundo.     • Desenvolvimento de matéria-prima reciclada para uso em maletas plásticas das ferramentas elétricas.'
+        break;
+      case 'element6':
+        newText = 'Aplicação de material reciclado na carcaça do motor da serra mármore, primeira ferramenta Heavy Duty a utilizar matéria-prima reciclada.';
+        break;
+      case 'element7':
+        newText = 'Aplicação de material reciclado na carcaça do motor da serra mármore, primeira ferramenta Heavy Duty a utilizar matéria-prima reciclada.';
+        break;
+
+      case 'remove':
+        newText = '';
+        removeAl()
+        break;
+
+      default:
+        newText = '';
+
+    }
+
+    // Define o novo texto a ser exibido na div
+    setDisplayText(newText);
   };
 
   return (
@@ -87,40 +141,51 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
         <hr></hr>
         <div className='history__years'>
           <div>
-            <h3 onClick={changeH}>2007</h3>
+            <h3 onClick={() => handleClick('element1')}>2007</h3>
 
           </div>
 
           <div>
-            <h3 onClick={changeH}>2016</h3>
+            <h3 onClick={() => handleClick('element2')}>2016</h3>
 
           </div>
 
           <div>
-            <h3 onClick={changeH}>2018</h3>
+            <h3 onClick={() => handleClick('element3')}>2018</h3>
 
           </div>
 
           <div>
-            <h3 onClick={changeH}>2019</h3>
+            <h3 onClick={() => handleClick('element4')}>2019</h3>
 
           </div>
 
           <div>
-            <h3 onClick={changeH}>2020</h3>
+            <h3 onClick={() => handleClick('element5')}>2020</h3>
 
           </div>
 
           <div>
-            <h3 onClick={changeH}>2021</h3>
+            <h3 onClick={() => handleClick('element6')}>2021</h3>
 
           </div>
 
           <div>
-            <h3 onClick={changeH}>2022</h3>
+            <h3 onClick={() => handleClick('element7')}>2022</h3>
 
 
           </div>
+
+        </div>
+
+        <div className='history__data'>
+
+
+          {displayText && <div className="data_h"><button onClick={() => handleClick('remove')}><svg xmlns="http://www.w3.org/2000/svg" width="25" height="28" viewBox="0 0 25 28" fill="none">
+            <path d="M4.49045 0L0 4.85305L2.29299 7.33121L7.96178 13.561L2.29299 19.6876L0 22.0625L4.49045 27.0188L6.78344 24.5406L12.5478 18.3108L18.2166 24.5406L20.414 27.0188L25 22.0625L22.707 19.6876L16.9427 13.561L22.707 7.33121L25 4.85305L20.414 0L18.2166 2.47816L12.5478 8.60471L6.78344 2.47816L4.49045 0Z" fill="#084179" />
+          </svg></button>
+            {displayText}
+          </div>}
 
         </div>
 
@@ -145,7 +210,7 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
 
           <div>
             <h2>2018</h2>
-            <p>Lançamento dos produtos sustentáveis, GSB 550-RE e GWS 850-RE, com redução de mais de 200 toneladas de matéria-prima.</p>
+            <p>Lançamento dos produtos sustentáveis GSB 550-RE e GWS 850-RE, com redução de mais de 200 toneladas de matéria-prima.</p>
 
           </div>
 
@@ -175,7 +240,7 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
           </div>
           <div>
             <h2>2021</h2>
-            <p>Aplicação de material reciclado na carcaça do motor da serra mármore, primeira ferramenta HD a utilizar matéria-prima reciclada.</p>
+            <p>Aplicação de material reciclado na carcaça do motor da serra mármore, primeira ferramenta Heavy Duty a utilizar matéria-prima reciclada.</p>
 
 
           </div>
