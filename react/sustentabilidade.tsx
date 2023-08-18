@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Slider from './slider';
+import Accordion from './accordion';
+
 
 
 const lpsustentabilidade: StorefrontFunctionComponent = () => {
@@ -388,6 +390,12 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
           <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_saco_biodegradavel_mobile.jpg" alt="saco_biodegradavel" />
 
         </Slider >
+
+
+      </section>
+
+      <section className="banner__faq">
+        <Accordion />
 
 
       </section>
