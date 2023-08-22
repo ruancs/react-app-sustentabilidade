@@ -1,5 +1,9 @@
 {
-  "scoremedia-app-lp": {
-    "component": "sustentabilidade"
+  "lp-sustentabilidade-1": {
+    "component": "Sustentabilidade1"
+  },
+  "lp-sustentabilidade-2": {
+    "component": "Sustentabilidade2"
   }
+
 }
