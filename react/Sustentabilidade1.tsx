@@ -8,8 +8,26 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
 
   const [displayText, setDisplayText] = useState('');
 
+  const [clickFura, setclickFura] = useState(null);
 
+  const appFura = (event) => {
 
+    const a = document.querySelector('.furadeira')
+
+    const elClicado = event.target;
+
+    console.log(event.target)
+
+    if (a && elClicado.dataset.content === 'ok') {
+
+      // const aClone = a.cloneNode(true)
+      (a as HTMLElement).style.display = "block";
+      elClicado.prepend(a)
+    }
+
+    setclickFura(clickFura);
+
+  };
 
   const Hand = (event) => {
 
@@ -17,27 +35,37 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
 
     console.log(event.target)
 
-
     if (elementoClicado.style.backgroundColor == '#CEE741' || elementoClicado.style.backgroundColor == 'rgb(206, 231, 65)') {
       elementoClicado.style.backgroundColor = '';
 
     } else {
       removeAl()
+      setFura()
       elementoClicado.style.backgroundColor = '#CEE741';
-
+      elementoClicado.dataset.content = 'ok'
     }
-
     setClickedElement(clickedElement);
 
   };
 
   const removeAl = () => {
 
-
-    const elementos = document.querySelectorAll('.history__years > div > h3');
+    const elementos = document.querySelectorAll('.history__years div h3');
     elementos.forEach(el => {
-      (el as HTMLElement).style.backgroundColor = '';
+      (el as HTMLElement).style.backgroundColor = 'transparent';
 
+    });
+  }
+
+  const setFura = () => {
+
+    const temFura = document.querySelectorAll('.history__years div h3');
+    temFura.forEach(e => {
+
+      if ((e as HTMLElement).dataset.content === 'ok') {
+
+        (e as HTMLElement).dataset.content = ''
+      }
 
     });
   }
@@ -59,39 +87,58 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
 
     let newText = '';
 
-    Hand(event)
-
     switch (element) {
+
       case 'element1':
+        Hand(event)
+        appFura(event)
         newText = 'Gestão ambiental é introduzida nas plantas da Bosch pelo mundo.';
         break;
       case 'element2':
+        Hand(event)
+        appFura(event)
         newText = 'Desenvolvimento da 1ª furadeira com carcaça de matéria-prima reciclada na cor preta.';
         break;
       case 'element3':
+        Hand(event)
+        appFura(event)
         newText = 'Lançamento dos produtos sustentáveis GSB 550, GSB 450 e GWS 850, com redução de mais de 200 toneladas de matéria-prima ao ano.';
         break;
       case 'element4':
+        Hand(event)
+        appFura(event)
         newText = '• Início da fabricação das ferramentas elétricas vigentes com carcaça de material reciclado. \u000A• Início da parceria com a Green Eletron, da ABINEE, para logística reversa e descarte sustentável.';
         break;
       case 'element5':
+        Hand(event)
+        appFura(event)
         newText = '• Bosch alcança em suas plantas a neutralidade de carbono em todo o mundo.\u000A• Desenvolvimento de matéria-prima reciclada para uso em maletas plásticas das ferramentas elétricas.'
         break;
       case 'element6':
+        Hand(event)
+        appFura(event)
         newText = 'Aplicação de material reciclado na carcaça do motor da serra mármore, primeira ferramenta Heavy Duty a utilizar matéria-prima reciclada.';
         break;
       case 'element7':
+        Hand(event)
+        appFura(event)
         newText = 'Aplicação de material reciclado na carcaça do motor da serra mármore, primeira ferramenta Heavy Duty a utilizar matéria-prima reciclada.';
         break;
 
       case 'remove':
-        newText = '';
-        removeAl()
+
+        const dataH = document.querySelector('.data_h')
+        const ab = document.querySelector('.furadeira')
+
+        if ((dataH as HTMLElement).style.display = "block") {
+          (dataH as HTMLElement).style.display = "none";
+          (ab as HTMLElement).style.display = "none";
+          removeAl()
+        }
         break;
 
       default:
         newText = '';
-
     }
 
     // Define o novo texto a ser exibido na div
@@ -111,7 +158,6 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
       <script src="https://boschferramentasbrasil.vteximg.com.br/arquivos/slick.min.js"></script>
       <script src="https://boschferramentasbrasil.myvtex.com/files/vtex--app-lp.js"></script>
 
-
       <div className="furadeira">
         <svg id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 645.26 592.99">
           <path d="m0,47.66c2.8-12.49,7.45-23.98,17.12-32.92C28.54,4.17,42.23,0,57.48,0c91.59,0,183.18-.04,274.78.14,4.43,0,9.18,1.33,13.22,3.23,14.05,6.61,27.76,13.93,41.79,20.57,3.82,1.81,8.3,2.92,12.52,3.04,13.43.38,26.89.3,40.33.07,6.32-.11,11.34,1.87,15.69,6.49,6.05,6.43,12.14,12.87,18.75,18.71,7,6.18,10.72,13.28,9.5,22.73-.21,1.62-.03,3.3-.03,5.86,2.85,0,5.27,0,7.7,0,44.75,0,89.49-.02,134.24.04,3.12,0,6.32.2,9.36.87,5.88,1.3,10.1,7.02,9.95,12.93-.15,5.75-4.2,11.09-9.87,12.36-3.04.68-6.23.89-9.35.9-44.54.05-89.07.04-133.61.04-2.5,0-5.01,0-7.67,0-.29,1.08-.78,1.89-.67,2.62,1.97,12.39-3.4,21.35-12.6,29.04-5.78,4.84-10.88,10.52-16.09,16.01-4.03,4.24-8.71,6.16-14.57,6.09-14.07-.17-28.15-.21-42.22.06-3.42.06-7.09.92-10.17,2.41-14.18,6.83-28.06,14.27-42.32,20.92-4.59,2.14-9.99,3.47-15.04,3.53-27.31.34-54.62.12-81.93.18-9.68.02-8.85-1.49-9.92,8.99-.11,1.04-.22,2.08-.43,4.02,3.27,0,6.33-.09,9.39.02,10.71.36,16.48,6.6,15.06,17.11-2.31,17.08-4.96,34.12-7.73,51.14-1.45,8.91-6.33,12.6-15.85,12.82-11.59.27-11.78.25-13.38,11.63-3.24,23.12-6.16,46.27-9.42,69.39-.59,4.18.49,6.42,4.4,8.3,14.19,6.81,28.15,14.07,42.27,21.03,21.59,10.64,32.19,28.12,32.29,52.03.12,30.31.21,60.62-.02,90.93-.21,27.88-15.32,47.88-41.26,54.86-4.8,1.29-9.95,1.78-14.94,1.79-52.1.12-104.2.24-156.29.01-27.63-.12-47.38-15.03-54.47-40.81-1.53-5.59-1.95-11.62-1.99-17.45-.18-31.99,0-63.99-.12-95.98-.07-17.77,5.09-33.79,18.95-44.93,18.19-14.62,25.68-33.24,29.52-55.8,8.29-48.67,18.91-96.94,28.56-145.38.2-.99.29-1.99.53-3.72-12.28,0-24.22.33-36.13-.1-10.01-.37-20.42-.11-29.88-2.82-20.71-5.92-32.99-20.59-37.29-41.82-.2-1-.67-1.95-1.02-2.92,0-31.15,0-62.3,0-93.46Zm322.32,113.99V27.41c-2.19-.11-4.04-.27-5.89-.27-86.49-.01-172.98-.04-259.47,0-19.32.01-30.04,10.7-30.13,30.03-.11,24.19.39,48.39-.16,72.56-.45,19.67,11.45,32.25,32.22,32.13,85.44-.51,170.88-.21,256.32-.21h7.11Zm-56.85,269.37c-2.85-7.09-7.87-10.64-13.59-13.5-18.01-9.03-36.03-18.02-53.99-27.12-7.72-3.91-10.29-8.26-9.27-16.07,6.17-47.11,12.44-94.21,18.68-141.31,1.92-14.5,3.85-29.01,5.75-43.33-.99-.43-1.37-.74-1.74-.74-25.2-.07-50.4-.05-75.6-.21-3.93-.03-4.17,2.37-4.74,5.2-12.1,60.79-24.17,121.59-36.59,182.32-.95,4.63-3.69,9.41-6.89,12.95-8.02,8.89-16.83,17.05-25.21,25.61-4.29,4.39-7.25,9.47-7.27,16.21h210.46Zm-211.29,27.43c-.11,2.16-.29,4.01-.29,5.86-.02,23.78-.07,47.56,0,71.33.06,19.51,10.52,30.1,29.9,30.12,51.66.07,103.33.06,154.99,0,19.44-.02,29.95-10.56,30.02-30,.08-23.99.03-47.98,0-71.97,0-1.79-.28-3.59-.43-5.35H54.18ZM403.58,134.81c10.94,0,21.21.15,31.46-.13,1.99-.05,4.13-1.49,5.88-2.74,13.14-9.4,17.4-21.69,16.94-38.21-.4-14.75-2.88-26.51-15.16-35.17-2.01-1.41-3.83-4.25-5.82-4.33-11.03-.43-22.08-.2-33.31-.2v80.79Zm-53.81,18.48c8.7-4.36,16.45-8.01,23.92-12.18,1.5-.84,2.73-3.6,2.74-5.48.17-27.55.14-55.09.06-82.64,0-1.54-.33-3.95-1.3-4.48-8.15-4.44-16.48-8.53-25.42-13.06v117.84Z" />
@@ -120,10 +166,8 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
         </svg>
       </div>
 
-
       <Slider />
       <section className='banner__main desktop'></section>
-
       <section className='banner__main mobile'>
         <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_main_sustentabilidade_mob.jpg" alt="banner_main_mobile" />
       </section>
@@ -139,9 +183,7 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
           <svg xmlns="http://www.w3.org/2000/svg" width="125" height="136" viewBox="0 0 125 136" fill="none">
             <path d="M124.079 67.685C124.079 105.025 96.2649 135.37 62.0397 135.37C27.8145 135.37 0 105.025 0 67.685C0 30.3454 27.8145 0 62.0397 0C65.8138 0 69.6395 0.394829 73.3102 1.12808C76.102 1.69213 77.9632 4.62514 77.4462 7.67097C76.9292 10.7168 74.2408 12.7473 71.449 12.1833C68.3987 11.5629 65.1934 11.2808 62.0397 11.2808C33.5531 11.2808 10.3399 36.6063 10.3399 67.685C10.3399 98.7637 33.5531 124.089 62.0397 124.089C90.5262 124.089 113.739 98.7637 113.739 67.685C113.739 64.2444 113.429 60.8037 112.912 57.4194C112.395 54.3736 114.256 51.4406 117.048 50.8766C119.892 50.3125 122.528 52.3431 123.045 55.3889C123.717 59.3936 124.079 63.5675 124.079 67.685ZM66.4858 34.1809C69.3293 34.6322 71.9143 32.4888 72.3279 29.3866C72.7415 26.2843 70.7769 23.4641 67.9334 23.0129C65.9688 22.7309 64.0043 22.5617 62.0397 22.5617C39.2401 22.5617 20.6799 42.8108 20.6799 67.685C20.6799 92.5592 39.2401 112.808 62.0397 112.808C84.8392 112.808 103.399 92.5592 103.399 67.685C103.399 65.5416 103.244 63.3983 102.986 61.2549C102.572 58.1527 99.9873 56.0093 97.1438 56.4606C94.3003 56.9118 92.3357 59.732 92.7493 62.8342C92.9561 64.4136 93.0595 66.0493 93.0595 67.685C93.0595 86.3548 79.1523 101.528 62.0397 101.528C44.9271 101.528 31.0198 86.3548 31.0198 67.685C31.0198 49.0152 44.9271 33.8425 62.0397 33.8425C63.539 33.8425 65.0383 33.9553 66.4858 34.1809ZM55.5772 51.3278C53.6643 49.0152 50.4072 48.7896 48.2875 50.8766C43.8931 55.1633 41.4115 61.3113 41.4115 67.685C41.4115 80.1503 50.6657 90.2467 62.0914 90.2467C67.9851 90.2467 73.5687 87.4829 77.4979 82.7449C79.4108 80.4324 79.204 76.8789 77.0843 74.7919C74.9646 72.705 71.7075 72.9306 69.7946 75.2432C67.83 77.6121 65.0383 79.0222 62.0914 79.0222C56.4044 79.0222 51.7514 73.9459 51.7514 67.7414C51.7514 64.5264 52.9922 61.4805 55.2153 59.3372C57.335 57.2502 57.5418 53.6968 55.6289 51.3842L55.5772 51.3278ZM63.5907 58.0963C61.5744 60.2961 61.5744 63.8495 63.5907 66.0493C64.6247 67.1774 65.9172 67.685 67.2613 67.685C68.6055 67.685 69.898 67.121 70.932 66.0493L95.2826 39.4829H108.673C110.069 39.4829 111.361 38.8625 112.343 37.8472L122.683 26.5664C124.183 24.9306 124.596 22.5053 123.821 20.4183C123.045 18.3314 121.132 16.9213 119.064 16.9213H108.725V5.64042C108.725 3.38425 107.484 1.2973 105.519 0.451233C103.555 -0.451233 101.383 0.0564043 99.8839 1.69213L89.5439 12.973C88.5616 14.0446 88.0446 15.4547 88.0446 16.9777V31.5863L63.6941 58.1527L63.5907 58.0963Z" fill="#CEE741" />
           </svg>
-
           <p>A estratégia de sustentabilidade da Bosch é trabalhada há muitos anos, e nosso principal objetivo é manter o compromisso de sermos uma empresa sustentável.</p>
-
         </div>
 
         <div className='card'>
@@ -155,132 +197,90 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
               </clipPath>
             </defs>
           </svg>
-
           <p>Acreditamos que é possível fazer a diferença, agindo com responsabilidade e preocupação com o meio ambiente, sem abrir mão da excelência em nossos produtos.</p>
-
         </div>
-
       </section>
 
       <section className='section__history desktop'>
         <h2>Conheça nossa história sustentável</h2>
         <hr></hr>
         <div className='history__years'>
-          <div>
-            <h3 onClick={() => handleClick('element1')}>2007</h3>
+          <div><h3 onClick={() => handleClick('element1')}>2007</h3></div>
 
-          </div>
+          <div><h3 onClick={() => handleClick('element2')}>2016</h3></div>
 
-          <div>
-            <h3 onClick={() => handleClick('element2')}>2016</h3>
+          <div><h3 onClick={() => handleClick('element3')}>2018</h3></div>
 
-          </div>
+          <div><h3 onClick={() => handleClick('element4')}>2019</h3></div>
 
-          <div>
-            <h3 onClick={() => handleClick('element3')}>2018</h3>
+          <div><h3 onClick={() => handleClick('element5')}>2020</h3></div>
 
-          </div>
+          <div><h3 onClick={() => handleClick('element6')}>2021</h3></div>
 
-          <div>
-            <h3 onClick={() => handleClick('element4')}>2019</h3>
-
-          </div>
-
-          <div>
-            <h3 onClick={() => handleClick('element5')}>2020</h3>
-
-          </div>
-
-          <div>
-            <h3 onClick={() => handleClick('element6')}>2021</h3>
-
-          </div>
-
-          <div>
-            <h3 onClick={() => handleClick('element7')}>2022</h3>
-
-
-          </div>
-
+          <div><h3 onClick={() => handleClick('element7')}>2022</h3></div>
         </div>
 
         <div className='history__data'>
-
-
           {displayText && <div className="data_h"><button onClick={() => handleClick('remove')}><svg xmlns="http://www.w3.org/2000/svg" width="25" height="28" viewBox="0 0 25 28" fill="none">
             <path d="M4.49045 0L0 4.85305L2.29299 7.33121L7.96178 13.561L2.29299 19.6876L0 22.0625L4.49045 27.0188L6.78344 24.5406L12.5478 18.3108L18.2166 24.5406L20.414 27.0188L25 22.0625L22.707 19.6876L16.9427 13.561L22.707 7.33121L25 4.85305L20.414 0L18.2166 2.47816L12.5478 8.60471L6.78344 2.47816L4.49045 0Z" fill="#084179" />
           </svg></button>
             {addLineBreaks(displayText)}
           </div>}
-
         </div>
-
       </section>
 
       <section className='section__history mobile'>
         <h2>Conheça nossa história sustentável</h2>
         <hr></hr>
         <Slider>
-
           <div>
             <h2>2007</h2>
             <p>Gestão ambiental é introduzida nas plantas da Bosch pelo mundo.</p>
-
           </div>
 
           <div>
             <h2>2016</h2>
             <p>Desenvolvimento da 1ª furadeira com carcaça de matéria-prima reciclada.</p>
-
           </div>
 
           <div>
             <h2>2018</h2>
             <p>Lançamento dos produtos sustentáveis GSB 550-RE e GWS 850-RE, com redução de mais de 200 toneladas de matéria-prima.</p>
-
           </div>
 
           <div>
             <h2>2019</h2>
             <p>Início da fabricação das ferramentas elétricas vigentes com carcaça de material reciclado.</p>
-
           </div>
 
           <div>
             <h2>2019</h2>
             <p> Início da parceria com a Green Eletron, da ABINEE, para logística reversa e descarte sustentável.</p>
-
           </div>
 
           <div>
             <h2>2020</h2>
             <p>Bosch alcança em suas plantas a neutralidade de carbono em todo o mundo.</p>
-
           </div>
 
           <div>
             <h2>2020</h2>
             <p>Desenvolvimento de matéria-prima reciclada para uso em maletas plásticas das ferramentas elétricas.</p>
-
-
           </div>
+
           <div>
             <h2>2021</h2>
             <p>Aplicação de material reciclado na carcaça do motor da serra mármore, primeira ferramenta Heavy Duty a utilizar matéria-prima reciclada.</p>
-
-
           </div>
+
           <div>
             <h2>2022</h2>
             <p>Desenvolvimento da embalagem de plástico biodegradável para kits de acessórios.</p>
-
-
           </div>
+
           <div>
             <h2>2022</h2>
             <p>Metade de toda matéria-prima plástica da planta de Campinas vem de fonte reciclada.</p>
-
-
           </div>
         </Slider>
 
@@ -291,7 +291,6 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
 
         <div className="meta__cards">
 
-
           <div className="bg-lemon">
             <svg xmlns="http://www.w3.org/2000/svg" width="58" height="62" viewBox="0 0 58 62" fill="none">
               <path d="M0.80615 46.1739C2.73336 47.9301 5.21136 48.8511 7.74783 48.7541C10.2843 48.657 12.6936 47.5489 14.4971 45.65C16.4463 47.6379 19.0427 48.7478 21.7436 48.7478C24.4444 48.7478 27.0408 47.6379 28.99 45.65C30.9392 47.6379 33.5356 48.7478 36.2364 48.7478C38.9373 48.7478 41.5337 47.6379 43.4829 45.65C45.2876 47.5475 47.6976 48.6537 50.2341 48.7488C52.7705 48.844 55.2478 47.9212 57.1738 46.1637C57.4147 45.9399 57.6113 45.6676 57.7524 45.3624C57.8934 45.0572 57.9761 44.7253 57.9955 44.3859C58.015 44.0464 57.9709 43.7063 57.8657 43.3852C57.7606 43.064 57.5965 42.7683 57.383 42.5151C57.1695 42.2619 56.9109 42.0563 56.6221 41.9103C56.3333 41.7642 56.0201 41.6806 55.7006 41.6642C55.3812 41.6479 55.0619 41.6991 54.7612 41.815C54.4606 41.9309 54.1845 42.1092 53.9492 42.3394C53.3147 42.8821 52.5715 43.2625 51.7768 43.4513C50.9821 43.6401 50.1573 43.6321 49.3659 43.4281C48.5746 43.2241 47.8379 42.8294 47.2128 42.2746C46.5877 41.7198 46.0909 41.0196 45.7607 40.2282C45.588 39.7339 45.2772 39.3077 44.87 39.0067C44.4628 38.7057 43.9788 38.5444 43.4829 38.5444C42.987 38.5444 42.503 38.7057 42.0958 39.0067C41.6886 39.3077 41.3778 39.7339 41.2051 40.2282C40.7582 41.2269 40.0542 42.0704 39.1748 42.661C38.2954 43.2516 37.2766 43.565 36.2364 43.565C35.1963 43.565 34.1775 43.2516 33.2981 42.661C32.4187 42.0704 31.7147 41.2269 31.2678 40.2282C31.0951 39.7339 30.7843 39.3077 30.3771 39.0067C29.9699 38.7057 29.4859 38.5444 28.99 38.5444C28.4941 38.5444 28.0101 38.7057 27.6029 39.0067C27.1957 39.3077 26.8849 39.7339 26.7122 40.2282C26.2653 41.2269 25.5613 42.0704 24.6819 42.661C23.8025 43.2516 22.7837 43.565 21.7436 43.565C20.7034 43.565 19.6846 43.2516 18.8052 42.661C17.9258 42.0704 17.2218 41.2269 16.7749 40.2282C16.6022 39.7339 16.2914 39.3077 15.8842 39.0067C15.477 38.7057 14.993 38.5444 14.4971 38.5444C14.0012 38.5444 13.5172 38.7057 13.11 39.0067C12.7029 39.3077 12.392 39.7339 12.2193 40.2282C11.889 41.0192 11.3922 41.7189 10.7673 42.2735C10.1424 42.828 9.40605 43.2225 8.61504 43.4265C7.82404 43.6305 6.99953 43.6386 6.20512 43.4501C5.41072 43.2616 4.66765 42.8816 4.03324 42.3394C3.55501 41.8844 2.92637 41.65 2.28561 41.6878C1.64486 41.7256 1.04447 42.0325 0.616535 42.541C0.188597 43.0495 -0.0318387 43.7179 0.00372106 44.3992C0.0392808 45.0805 0.327923 45.7189 0.80615 46.1739ZM53.9468 55.1915C53.3123 55.7342 52.5691 56.1146 51.7744 56.3033C50.9797 56.4921 50.1549 56.4842 49.3635 56.2802C48.5722 56.0761 47.8355 55.6815 47.2104 55.1266C46.5853 54.5718 46.0885 53.8717 45.7583 53.0803C45.5855 52.586 45.2747 52.1598 44.8676 51.8588C44.4604 51.5578 43.9764 51.3965 43.4805 51.3965C42.9846 51.3965 42.5006 51.5578 42.0934 51.8588C41.6862 52.1598 41.3754 52.586 41.2027 53.0803C40.7558 54.0789 40.0518 54.9224 39.1724 55.513C38.293 56.1036 37.2742 56.4171 36.234 56.4171C35.1939 56.4171 34.1751 56.1036 33.2957 55.513C32.4163 54.9224 31.7123 54.0789 31.2654 53.0803C31.0927 52.586 30.7818 52.1598 30.3747 51.8588C29.9675 51.5578 29.4835 51.3965 28.9876 51.3965C28.4917 51.3965 28.0077 51.5578 27.6005 51.8588C27.1933 52.1598 26.8825 52.586 26.7098 53.0803C26.2629 54.0789 25.5589 54.9224 24.6795 55.513C23.8001 56.1036 22.7813 56.4171 21.7411 56.4171C20.701 56.4171 19.6822 56.1036 18.8028 55.513C17.9234 54.9224 17.2194 54.0789 16.7725 53.0803C16.5998 52.586 16.2889 52.1598 15.8818 51.8588C15.4746 51.5578 14.9906 51.3965 14.4947 51.3965C13.9988 51.3965 13.5148 51.5578 13.1076 51.8588C12.7004 52.1598 12.3896 52.586 12.2169 53.0803C11.8866 53.8713 11.3898 54.571 10.7649 55.1255C10.14 55.6801 9.40364 56.0745 8.61263 56.2785C7.82162 56.4825 6.99711 56.4906 6.20271 56.3021C5.4083 56.1137 4.66523 55.7337 4.03082 55.1915C3.55243 54.747 2.92864 54.5208 2.29454 54.5619C1.66044 54.603 1.06709 54.9081 0.643008 55.411C0.218926 55.9139 -0.00174444 56.5743 0.0287911 57.249C0.0593266 57.9237 0.33861 58.5584 0.80615 59.0157C2.73336 60.7719 5.21136 61.6929 7.74783 61.5959C10.2843 61.4988 12.6936 60.3907 14.4971 58.4918C16.4463 60.4797 19.0427 61.5896 21.7436 61.5896C24.4444 61.5896 27.0408 60.4797 28.99 58.4918C30.9392 60.4797 33.5356 61.5896 36.2364 61.5896C38.9373 61.5896 41.5337 60.4797 43.4829 58.4918C45.2876 60.3893 47.6976 61.4955 50.2341 61.5906C52.7705 61.6858 55.2478 60.763 57.1738 59.0055C57.4147 58.7817 57.6113 58.5094 57.7524 58.2042C57.8934 57.899 57.9761 57.5671 57.9955 57.2276C58.015 56.8882 57.9709 56.5481 57.8657 56.2269C57.7606 55.9058 57.5965 55.6101 57.383 55.3569C57.1695 55.1037 56.9109 54.8981 56.6221 54.752C56.3333 54.606 56.0201 54.5224 55.7006 54.506C55.3812 54.4897 55.0619 54.5409 54.7612 54.6568C54.4606 54.7727 54.1845 54.951 53.9492 55.1812L53.9468 55.1915ZM20.0527 22.3653L27.2992 30.0703C27.7521 30.5518 28.3664 30.8223 29.0069 30.8223C29.6474 30.8223 30.2617 30.5518 30.7147 30.0703L37.9611 22.3653C38.4143 21.8837 38.6691 21.2304 38.6693 20.5491C38.6696 19.8678 38.4152 19.2143 37.9623 18.7323C37.5094 18.2504 36.895 17.9795 36.2542 17.9793C35.6135 17.979 34.9989 18.2495 34.5456 18.731L31.4176 22.0519V2.56836C31.4176 1.88719 31.1631 1.23392 30.7101 0.752255C30.2571 0.270594 29.6427 0 29.0021 0C28.3615 0 27.7471 0.270594 27.2941 0.752255C26.8411 1.23392 26.5866 1.88719 26.5866 2.56836V22.0519L23.4465 18.731C22.9932 18.2495 22.3786 17.979 21.7379 17.9793C21.0971 17.9795 20.4827 18.2504 20.0298 18.7323C19.5768 19.2143 19.3225 19.8678 19.3227 20.5491C19.323 21.2304 19.5777 21.8837 20.031 22.3653H20.0527Z" fill="#084179" />
@@ -331,11 +330,9 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
 
       </section>
 
-
       <section className="section__metas mobile">
         <h2>Metas Sustentáveis</h2>
         <Slider>
-
           <div className="bg-lemon">
             <svg xmlns="http://www.w3.org/2000/svg" width="58" height="62" viewBox="0 0 58 62" fill="none">
               <path d="M0.80615 46.1739C2.73336 47.9301 5.21136 48.8511 7.74783 48.7541C10.2843 48.657 12.6936 47.5489 14.4971 45.65C16.4463 47.6379 19.0427 48.7478 21.7436 48.7478C24.4444 48.7478 27.0408 47.6379 28.99 45.65C30.9392 47.6379 33.5356 48.7478 36.2364 48.7478C38.9373 48.7478 41.5337 47.6379 43.4829 45.65C45.2876 47.5475 47.6976 48.6537 50.2341 48.7488C52.7705 48.844 55.2478 47.9212 57.1738 46.1637C57.4147 45.9399 57.6113 45.6676 57.7524 45.3624C57.8934 45.0572 57.9761 44.7253 57.9955 44.3859C58.015 44.0464 57.9709 43.7063 57.8657 43.3852C57.7606 43.064 57.5965 42.7683 57.383 42.5151C57.1695 42.2619 56.9109 42.0563 56.6221 41.9103C56.3333 41.7642 56.0201 41.6806 55.7006 41.6642C55.3812 41.6479 55.0619 41.6991 54.7612 41.815C54.4606 41.9309 54.1845 42.1092 53.9492 42.3394C53.3147 42.8821 52.5715 43.2625 51.7768 43.4513C50.9821 43.6401 50.1573 43.6321 49.3659 43.4281C48.5746 43.2241 47.8379 42.8294 47.2128 42.2746C46.5877 41.7198 46.0909 41.0196 45.7607 40.2282C45.588 39.7339 45.2772 39.3077 44.87 39.0067C44.4628 38.7057 43.9788 38.5444 43.4829 38.5444C42.987 38.5444 42.503 38.7057 42.0958 39.0067C41.6886 39.3077 41.3778 39.7339 41.2051 40.2282C40.7582 41.2269 40.0542 42.0704 39.1748 42.661C38.2954 43.2516 37.2766 43.565 36.2364 43.565C35.1963 43.565 34.1775 43.2516 33.2981 42.661C32.4187 42.0704 31.7147 41.2269 31.2678 40.2282C31.0951 39.7339 30.7843 39.3077 30.3771 39.0067C29.9699 38.7057 29.4859 38.5444 28.99 38.5444C28.4941 38.5444 28.0101 38.7057 27.6029 39.0067C27.1957 39.3077 26.8849 39.7339 26.7122 40.2282C26.2653 41.2269 25.5613 42.0704 24.6819 42.661C23.8025 43.2516 22.7837 43.565 21.7436 43.565C20.7034 43.565 19.6846 43.2516 18.8052 42.661C17.9258 42.0704 17.2218 41.2269 16.7749 40.2282C16.6022 39.7339 16.2914 39.3077 15.8842 39.0067C15.477 38.7057 14.993 38.5444 14.4971 38.5444C14.0012 38.5444 13.5172 38.7057 13.11 39.0067C12.7029 39.3077 12.392 39.7339 12.2193 40.2282C11.889 41.0192 11.3922 41.7189 10.7673 42.2735C10.1424 42.828 9.40605 43.2225 8.61504 43.4265C7.82404 43.6305 6.99953 43.6386 6.20512 43.4501C5.41072 43.2616 4.66765 42.8816 4.03324 42.3394C3.55501 41.8844 2.92637 41.65 2.28561 41.6878C1.64486 41.7256 1.04447 42.0325 0.616535 42.541C0.188597 43.0495 -0.0318387 43.7179 0.00372106 44.3992C0.0392808 45.0805 0.327923 45.7189 0.80615 46.1739ZM53.9468 55.1915C53.3123 55.7342 52.5691 56.1146 51.7744 56.3033C50.9797 56.4921 50.1549 56.4842 49.3635 56.2802C48.5722 56.0761 47.8355 55.6815 47.2104 55.1266C46.5853 54.5718 46.0885 53.8717 45.7583 53.0803C45.5855 52.586 45.2747 52.1598 44.8676 51.8588C44.4604 51.5578 43.9764 51.3965 43.4805 51.3965C42.9846 51.3965 42.5006 51.5578 42.0934 51.8588C41.6862 52.1598 41.3754 52.586 41.2027 53.0803C40.7558 54.0789 40.0518 54.9224 39.1724 55.513C38.293 56.1036 37.2742 56.4171 36.234 56.4171C35.1939 56.4171 34.1751 56.1036 33.2957 55.513C32.4163 54.9224 31.7123 54.0789 31.2654 53.0803C31.0927 52.586 30.7818 52.1598 30.3747 51.8588C29.9675 51.5578 29.4835 51.3965 28.9876 51.3965C28.4917 51.3965 28.0077 51.5578 27.6005 51.8588C27.1933 52.1598 26.8825 52.586 26.7098 53.0803C26.2629 54.0789 25.5589 54.9224 24.6795 55.513C23.8001 56.1036 22.7813 56.4171 21.7411 56.4171C20.701 56.4171 19.6822 56.1036 18.8028 55.513C17.9234 54.9224 17.2194 54.0789 16.7725 53.0803C16.5998 52.586 16.2889 52.1598 15.8818 51.8588C15.4746 51.5578 14.9906 51.3965 14.4947 51.3965C13.9988 51.3965 13.5148 51.5578 13.1076 51.8588C12.7004 52.1598 12.3896 52.586 12.2169 53.0803C11.8866 53.8713 11.3898 54.571 10.7649 55.1255C10.14 55.6801 9.40364 56.0745 8.61263 56.2785C7.82162 56.4825 6.99711 56.4906 6.20271 56.3021C5.4083 56.1137 4.66523 55.7337 4.03082 55.1915C3.55243 54.747 2.92864 54.5208 2.29454 54.5619C1.66044 54.603 1.06709 54.9081 0.643008 55.411C0.218926 55.9139 -0.00174444 56.5743 0.0287911 57.249C0.0593266 57.9237 0.33861 58.5584 0.80615 59.0157C2.73336 60.7719 5.21136 61.6929 7.74783 61.5959C10.2843 61.4988 12.6936 60.3907 14.4971 58.4918C16.4463 60.4797 19.0427 61.5896 21.7436 61.5896C24.4444 61.5896 27.0408 60.4797 28.99 58.4918C30.9392 60.4797 33.5356 61.5896 36.2364 61.5896C38.9373 61.5896 41.5337 60.4797 43.4829 58.4918C45.2876 60.3893 47.6976 61.4955 50.2341 61.5906C52.7705 61.6858 55.2478 60.763 57.1738 59.0055C57.4147 58.7817 57.6113 58.5094 57.7524 58.2042C57.8934 57.899 57.9761 57.5671 57.9955 57.2276C58.015 56.8882 57.9709 56.5481 57.8657 56.2269C57.7606 55.9058 57.5965 55.6101 57.383 55.3569C57.1695 55.1037 56.9109 54.8981 56.6221 54.752C56.3333 54.606 56.0201 54.5224 55.7006 54.506C55.3812 54.4897 55.0619 54.5409 54.7612 54.6568C54.4606 54.7727 54.1845 54.951 53.9492 55.1812L53.9468 55.1915ZM20.0527 22.3653L27.2992 30.0703C27.7521 30.5518 28.3664 30.8223 29.0069 30.8223C29.6474 30.8223 30.2617 30.5518 30.7147 30.0703L37.9611 22.3653C38.4143 21.8837 38.6691 21.2304 38.6693 20.5491C38.6696 19.8678 38.4152 19.2143 37.9623 18.7323C37.5094 18.2504 36.895 17.9795 36.2542 17.9793C35.6135 17.979 34.9989 18.2495 34.5456 18.731L31.4176 22.0519V2.56836C31.4176 1.88719 31.1631 1.23392 30.7101 0.752255C30.2571 0.270594 29.6427 0 29.0021 0C28.3615 0 27.7471 0.270594 27.2941 0.752255C26.8411 1.23392 26.5866 1.88719 26.5866 2.56836V22.0519L23.4465 18.731C22.9932 18.2495 22.3786 17.979 21.7379 17.9793C21.0971 17.9795 20.4827 18.2504 20.0298 18.7323C19.5768 19.2143 19.3225 19.8678 19.3227 20.5491C19.323 21.2304 19.5777 21.8837 20.031 22.3653H20.0527Z" fill="#084179" />
@@ -372,50 +369,44 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
           </div>
         </Slider>
 
-
-
       </section>
 
       <section className="section__know">
         <div>
           <h2>Conheça o <br /> <span>BOSCH RECICLA</span></h2>
-          <p>Com a constante preocupação em manter o meio ambiente limpo, a Bosch criou uma parceria com a <strong>Green Eletron</strong>, da ABINEE, para promover o descarte sustentável das ferramentas e embalagens que circulam no mercado. <strong>Todo material descartado, nos pontos de coleta dos Revendedores Parceiros ou nas Assistências Técnicas Bosch, passa pelo processo de descarte consciente.</strong></p>
-          <a href="#">Confira o passo a passo do programa</a>
+          <p>Com a constante preocupação em manter o meio ambiente limpo, a Bosch criou uma parceria com a <strong>Green Eletron</strong>, da ABINEE, para promover o descarte sustentável das ferramentas e embalagens que circulam no mercado. <strong>Todo material descartado, nos pontos de coleta dos Revendedores Parceiros ou nas Assistências Técnicas Bosch, passa pelo processo de descarte consciente.</strong></p><br /><br /><br />
+          <p>Confira o passo a passo do programa:</p>
         </div>
 
         <div>
-          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/bosch-recicla.png" alt="bosch recicla" />
+          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/bosch-recicla.png?v=2" alt="bosch recicla" />
         </div>
 
       </section>
 
-      <section className="banner__green desktop"></section>
-      <section className="banner__green mobile">
-        <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner-green-eletron-mobile.jpg" alt="banner green" />
-      </section>
+      <a href="https://greeneletron.org.br/localizador" target="_blank">
+        <section className="banner__green desktop"></section>
+      </a>
+      <a href="https://greeneletron.org.br/localizador" target="_blank">
+        <section className="banner__green mobile">
+          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner-green-eletron-mobile.jpg" alt="banner green" />
+        </section>
+      </a>
 
       <section className="banner__projects desktop">
         <Slider>
-
-          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_ferramentas_sustentaveis.png" alt="ferramentas_sustentaveis" />
-          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_maletas_reciclaveis.png" alt="maletas_reciclaveis" />
-          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_saco_biodegradavel.png" alt="saco_biodegradavel" />
-
+          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_ferramentas_sustentaveis-2.png" alt="ferramentas_sustentaveis" />
+          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_maletas_reciclaveis-2.png" alt="maletas_reciclaveis" />
+          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_saco_biodegradavel-2.png" alt="saco_biodegradavel" />
         </Slider >
-
-
       </section>
 
       <section className="banner__projects mobile">
         <Slider>
-
-          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner-ferramentas-sustentaveis-mobile.jpg" alt="ferramentas_sustentaveis" />
-          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner-maletas-mobile.jpg" alt="maletas_reciclaveis" />
-          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_saco_biodegradavel_mobile.jpg" alt="saco_biodegradavel" />
-
+          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner-ferramentas-sustentaveis-mobile-2.jpg" alt="ferramentas_sustentaveis" />
+          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner-maletas-mobile-2.jpg" alt="maletas_reciclaveis" />
+          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_saco_biodegradavel_mobile-2.jpg" alt="saco_biodegradavel" />
         </Slider >
-
-
       </section>
 
     </>

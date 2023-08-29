@@ -1,6 +1,8 @@
 import React, { useState, useRef } from "react";
 import ReactDOM from "react-dom";
 
+const link = 'https://greeneletron.org.br/localizador'
+
 const faqs = [
   {
     id: 1,
@@ -15,7 +17,8 @@ const faqs = [
   {
     id: 3,
     header: "Quais assistências técnicas da Bosch tem ponto de descarte?",
-    text: `Todas as Assistências técnicas autorizadas Bosch estão aptas a receberem os nossos produtos em fim de vida para realização do descarte correto. Além disso, a Green Eletron também tem mais de 1.200 pontos de descarte espalhados por 25 estados brasileiros. Para saber qual o ponto mais próximo de você, acesse: https://greeneletron.org.br/localizador `
+    text: `Todas as Assistências técnicas autorizadas Bosch estão aptas a receberem os nossos produtos em fim de vida para realização do descarte correto. Além disso, a Green Eletron também tem mais de 1.200 pontos de descarte espalhados por 25 estados brasileiros. Para saber qual o ponto mais próximo de você, acesse: `,
+    url: 'https://greeneletron.org.br/localizador'
   },
   {
     id: 4,
@@ -27,7 +30,7 @@ const faqs = [
 const AccordionItem = (props) => {
   const contentEl = useRef();
   const { handleToggle, active, faq } = props;
-  const { header, id, text } = faq;
+  const { header, id, text, url } = faq;
 
   return (
     <div className="rc-accordion-card">
@@ -44,6 +47,9 @@ const AccordionItem = (props) => {
       }>
         <div className="rc-accordion-body">
           <p className='mb-0'>{text}</p>
+          {url && (
+            <a href={url} target="_blank">https://greeneletron.org.br/localizador</a>
+          )}
         </div>
       </div>
     </div>

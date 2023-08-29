@@ -12,9 +12,9 @@ const lpsustentabilidade2: StorefrontFunctionComponent = () => {
 
       </section>
 
-      <section className="banner__blog desktop"></section>
+      <a href=" https://boschalemdaferramenta.com.br/bosch-e-sustentabilidade/" target="_blank"><section className="banner__blog desktop"></section></a>
       <section className="banner__blog mobile">
-        <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_blog_sustentabilidade_mob.jpg" alt="banner_main_mobile" />
+        <a href=" https://boschalemdaferramenta.com.br/bosch-e-sustentabilidade/" target="_blank"><img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner_blog_sustentabilidade_mob.jpg" alt="banner_main_mobile" /></a>
       </section>
 
     </>
