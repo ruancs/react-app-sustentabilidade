@@ -23,7 +23,7 @@ const faqs = [
   {
     id: 4,
     header: "Quais são os planos para o futuro sobre o tema?",
-    text: `Temos muitos planos para deixar nossos processos ainda mais sustentáveis no futuro! Nossa meta é reduzir as emissões de CO2 em 15% até 2030. Também temos prevista a instalação de uma usina de energia solar no teto da fábrica de Campinas, que vai ser responsável por 12% de toda a energia que a empresa consome nos próximos anos.`
+    text: `Temos muitos planos para deixar nossos processos ainda mais sustentáveis no futuro! Nossa meta é reduzir as emissões de CO₂ em 15% até 2030. Também temos prevista a instalação de uma usina de energia solar no teto da fábrica de Campinas, que vai ser responsável por 12% de toda a energia que a empresa consome nos próximos anos.`
   }
 ]
 

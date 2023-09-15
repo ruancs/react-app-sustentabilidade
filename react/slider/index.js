@@ -8,7 +8,7 @@ export default function Slick({ children }) {
     dots: false,
     arrows: true,
     infinite: true,
-    speed: 500,
+    speed: 800,
     autoplay: true,
     slidesToShow: 1,
     slidesToScroll: 1
