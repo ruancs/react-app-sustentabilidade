@@ -387,7 +387,7 @@ const lpsustentabilidade: StorefrontFunctionComponent = () => {
       </a>
       <a href="https://greeneletron.org.br/localizador" target="_blank">
         <section className="banner__green mobile">
-          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner-green-eletron-mobile?v=2.jpg" alt="banner green" />
+          <img src="https://boschferramentasbrasil.vteximg.com.br/arquivos/banner-green-eletron-mobile.jpg?v=2" alt="banner green" />
         </section>
       </a>
 
